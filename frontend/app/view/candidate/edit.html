@@ -1,0 +1,58 @@
+<div layout="column"  class="md-inline-form">
+
+    <md-content layout-padding>
+        <div>
+            <form name="userForm">
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Nome</label>
+                        <input ng-model="user.name" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>CPF</label>
+                        <input ng-model="user.cpf" required ng-pattern="/^[0-9]{11}$/" >
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Telefone</label>
+                        <input ng-model="user.phone" required>
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Endereço</label>
+                        <input ng-model="user.address">
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Idade</label>
+                        <input ng-model="user.age" ng-pattern="/^[0-9]{3}$/">
+                    </md-input-container>
+
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <label>Sexo</label>
+                        <md-select name="type" ng-model="user.gender" required>
+                            <md-option value="MASCULINO">Masculino</md-option>
+                            <md-option value="FEMININO">Feminino</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row" style="float: right;">
+                    <md-input-container class="md-block" flex-gt-sm>
+                        <md-checkbox name="tos" ng-model="user.tos" required>
+                            Eu aceito os termos de serviço.
+                        </md-checkbox>
+                    </md-input-container>
+                </div>
+
+            </form>
+        </div>
+    </md-content>
+
+</div>

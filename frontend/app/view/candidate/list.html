@@ -1,0 +1,26 @@
+<div ng-cloak layout-gt-sm="row" layout="column">
+
+    <div flex-gt-sm="100" flex>
+
+        <md-content>
+            <md-list flex>
+                <md-list-item class="md-3-line" ng-repeat="item in candidates" ng-click="null">
+
+                    <i class="fas fa-user-circle fa-3x" style="color: #9e9e9e; padding-right: 16px"></i>
+
+                    <div class="md-list-item-text" layout="column">
+                        <h3>{{ item.nome }}</h3>
+                        <h4>Idadel: {{ item.idade }}</h4>
+                        <p>Telefone: {{ item.telefone }}</p>
+                    </div>
+
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+
+    <md-button aria-label="menu" class="md-fab md-primary md-fab-bottom-right">
+        <i class="fas fa-plus fa-1x" style="color: white"></i>
+    </md-button>
+
+</div>
