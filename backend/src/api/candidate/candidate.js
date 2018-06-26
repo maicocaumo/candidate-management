@@ -3,7 +3,7 @@ const mongoose = restful.mongoose
 
 const candidateSchema = new mongoose.Schema({
     nome: { type: String, required: true },
-    cpf: { type: Number, required: true },
+    cpf: { type: Number, required: true, unique: [true, 'Um candidato com esse CPF já existe.'], },
     telefone: { type: Number, required: true },
     endereco: { type: String, required: false },
     sexo: { type: String, required: true, uppercase: true, enum: ['FEMININO', 'MASCULINO']},

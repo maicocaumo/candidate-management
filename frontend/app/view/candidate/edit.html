@@ -7,19 +7,30 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Nome</label>
-                        <input ng-model="user.name" required>
+                        <input name="name" ng-model="user.name" required>
+                        <div ng-messages="userForm.name.$error">
+                            <div ng-message="required">Nome é obrigatório.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>CPF</label>
-                        <input ng-model="user.cpf" required ng-pattern="/^[0-9]{11}$/" >
+                        <input name="cpf" ng-model="user.cpf" required ng-pattern="/^[0-9]{11}$/" >
+                        <div ng-messages="userForm.cpf.$error">
+                            <div ng-message="required">CPF é obrigatório.</div>
+                            <div ng-message="pattern">Informe um valor válido. (Somente números)</div>
+                        </div>
                     </md-input-container>
                 </div>
 
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Telefone</label>
-                        <input ng-model="user.phone" required>
+                        <input name="phone" ng-model="user.phone" ng-pattern="/^[0-9]{10,11}$/" required>
+                        <div ng-messages="userForm.phone.$error">
+                            <div ng-message="required">Telefone é obrigatório.</div>
+                            <div ng-message="pattern">Informe um telefone válido. (Somente números ex. 11999999999)</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
@@ -31,24 +42,31 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm>
                         <label>Idade</label>
-                        <input ng-model="user.age" ng-pattern="/^[0-9]{3}$/">
+                        <input name="age" ng-model="user.age" ng-pattern="/^[0-9]{0,3}$/">
+                        <div ng-messages="userForm.age.$error">
+                            <div ng-message="pattern">Informe um valor válido.</div>
+                        </div>
                     </md-input-container>
 
                     <md-input-container class="md-block" flex-gt-sm>
-                        <label>Sexo</label>
-                        <md-select name="type" ng-model="user.gender" required>
+                        <label>Gênero</label>
+                        <md-select name="gender" ng-model="user.gender" required>
                             <md-option value="MASCULINO">Masculino</md-option>
                             <md-option value="FEMININO">Feminino</md-option>
                         </md-select>
+                        <div ng-messages="userForm.gender.$error">
+                            <div ng-message="required">Gênero é obrigatório.</div>
+                        </div>
                     </md-input-container>
                 </div>
 
-                <div layout-gt-sm="row" style="float: right;">
-                    <md-input-container class="md-block" flex-gt-sm>
-                        <md-checkbox name="tos" ng-model="user.tos" required>
-                            Eu aceito os termos de serviço.
-                        </md-checkbox>
-                    </md-input-container>
+                <div layout layout-padding layout-align="start">
+                    <md-checkbox ng-model="user.tos">Eu aceito os termos de serviço.</md-checkbox>
+                </div>
+
+                <div layout="row" layout-align="end" flex>
+                    <md-button ng-click="cancelEdit()">Cancelar</md-button>
+                    <md-button ng-click="save()" class="md-primary">Salvar</md-button>
                 </div>
 
             </form>
