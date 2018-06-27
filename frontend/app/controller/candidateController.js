@@ -71,11 +71,7 @@ function candidateController($scope, $http, $routeParams, $mdToast, $window, $md
                 if(response.status == 409) {
                     errorsMessage = 'Candidato já cadastrado';
                 } else {
-                    debugger
-                    response.data.errors.forEach(i => {
-                        console.log(i)
-                    })
-                    errorsMessage = response.data.errors;
+                    errorsMessage = response.data.errors.join(' ');
                 }
 
                 $mdDialog.show(

@@ -1,0 +1,22 @@
+<div layout="column" id="login" layout-align="center center">
+
+
+    <md-input-container>
+        <label>Usuário</label>
+        <input ng-model="user">
+    </md-input-container>
+
+    <md-input-container>
+        <label>Senha</label>
+        <input ng-model="password">
+    </md-input-container>
+
+    <md-button class="md-raised md-primary" ng-click="login($event)" flex>
+        Entrar
+    </md-button>
+    <md-button class="md-raised md-accent" ng-click="register()" flex>
+        Cadastrar novo usuário
+    </md-button>
+
+
+</div>
