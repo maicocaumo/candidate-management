@@ -1,4 +1,4 @@
-<div layout="column"  class="md-inline-form">
+<div layout="column" id="editCandidate" class="md-inline-form">
 
     <md-content layout-padding>
         <div>
@@ -66,7 +66,7 @@
 
                 <div layout="row" layout-align="end" flex>
                     <md-button ng-click="cancelEdit()">Cancelar</md-button>
-                    <md-button ng-click="save()" class="md-primary">Salvar</md-button>
+                    <md-button ng-click="save($event)" class="md-primary">Salvar</md-button>
                 </div>
 
             </form>

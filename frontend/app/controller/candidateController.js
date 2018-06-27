@@ -1,4 +1,6 @@
-function candidateController($scope, $http, $routeParams, $mdToast, $window) {
+const URL_BACKEND = 'http://localhost:9000/api/'
+
+function candidateController($scope, $http, $routeParams, $mdToast, $window, $mdDialog) {
 
     function init() {
 
@@ -7,7 +9,7 @@ function candidateController($scope, $http, $routeParams, $mdToast, $window) {
             // se for diferente de new busca o registro
             if ($routeParams.id != 'new') {
 
-                $http.get('http://localhost:9000/api/candidates/' + $routeParams.id)
+                $http.get(URL_BACKEND + 'candidates/' + $routeParams.id)
                     .then(function (response) {
                         let candidate = response.data;
 
@@ -26,14 +28,14 @@ function candidateController($scope, $http, $routeParams, $mdToast, $window) {
             }
         } else {
 
-            $http.get('http://localhost:9000/api/candidates/termoResponsabilidadeTrue')
+            $http.get(URL_BACKEND + 'candidates/termoResponsabilidadeTrue')
                 .then(function (response) {
                     $scope.candidates = response.data;
                 });
         }
     };
 
-    $scope.save = function () {
+    $scope.save = function (ev) {
 
         if($scope.userForm.$valid) {
 
@@ -41,7 +43,7 @@ function candidateController($scope, $http, $routeParams, $mdToast, $window) {
 
             $http({
                 method: user.id ? 'PUT' : 'POST',
-                url: 'http://localhost:9000/api/candidates' + (user.id ? '/' + user.id : ''),
+                url: URL_BACKEND + 'candidates' + (user.id ? '/' + user.id : ''),
                 data: {
                     'nome': user.name,
                     'cpf': user.cpf,
@@ -64,6 +66,27 @@ function candidateController($scope, $http, $routeParams, $mdToast, $window) {
 
             }, function errorCallback(response) {
 
+                let errorsMessage = '';
+
+                if(response.status == 409) {
+                    errorsMessage = 'Candidato já cadastrado';
+                } else {
+                    debugger
+                    response.data.errors.forEach(i => {
+                        console.log(i)
+                    })
+                    errorsMessage = response.data.errors;
+                }
+
+                $mdDialog.show(
+                    $mdDialog.alert()
+                        .parent(angular.element(document.querySelector('#editCandidate')))
+                        .clickOutsideToClose(true)
+                        .title('Ops')
+                        .textContent(errorsMessage)
+                        .ok('Ok')
+                        .targetEvent(ev)
+                );
             });
         } else {
 

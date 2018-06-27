@@ -11,5 +11,5 @@ module.config(['$routeProvider', '$locationProvider', function ($routeProvider, 
             templateUrl: 'app/view/candidate/edit.html',
             controller: candidateController
         })
-        .otherwise({redirectTo: '/'});
+        .otherwise({redirectTo: '/candidate'});
 }]);
