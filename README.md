@@ -12,6 +12,7 @@ Funcionalidades:
 ### Instalação
 
 Requer [Node.js](https://nodejs.org/).
+Requer [MongoDB](https://www.mongodb.com) install ubuntu: sudo apt install mongodb-server
 
 **Backend**
 ```sh
