@@ -24,6 +24,7 @@ $ npm start
 ```sh
 $ cd frontend
 $ npm install
+$ sudo npm install bower -g
 $ bower install
 $ npm start
 ```
